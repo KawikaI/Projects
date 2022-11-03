@@ -1,4 +1,4 @@
-from coffee_utils import print_message, get_size, order_latte
+from utils import print_message, get_size, order_latte
 
 def coffee_bot():
   print('Welcome to the cafe!')
@@ -33,7 +33,7 @@ def get_drink_type():
   if res == 'a':
     return 'brewed coffee'
   elif res == 'b':
-    return order_mocha
+    return order_mocha()
   elif res == 'c':
     return order_latte()
   else:
