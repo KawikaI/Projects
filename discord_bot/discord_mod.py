@@ -221,7 +221,7 @@ async def next_level(ctx, member: discord.Member = None):
 
 
 # secret and run statement
-my_secret = 'MTAzODU1MjAzMzg1NjMzNTk4NA.GYMcgJ.htwsY8bgQcMGb5BFn7h1b21FhXJO7-1ZDQPbmg'
+my_secret = ''
 bot.run(my_secret)
 
 
