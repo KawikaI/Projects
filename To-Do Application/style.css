@@ -1,0 +1,96 @@
+/* Styling the Add button */
+#AddButton {
+    font-size: 14px;      /* Adjust the font size of the button text */
+    padding: 3px 7px;   /* Add padding to increase overall size */
+    background-color: #3498db; /* Button color */
+    color: white;         /* Text color */
+    border: none;         /* Remove default border */
+    border-radius: 4px;   /* Rounded corners */
+    cursor: pointer;      /* Hand cursor on hover */
+}
+
+/* Add hover effect for Add button */
+#AddButton:hover {
+    background-color: #2980b9; /* Darken button color on hover */
+}
+        
+ 
+
+/* Styling delete button */
+#DeleteButton {
+    font-size: 14px;      /* Adjust the font size of the button text */
+    padding: 3px 7px;   /* Add padding to increase overall size */
+    background-color: #3498db; /* Button color */
+    color: white;         /* Text color */
+    border: none;         /* Remove default border */
+    border-radius: 4px;   /* Rounded corners */
+    cursor: pointer;      /* Hand cursor on hover */
+}
+
+/* Add hover effect for delete button */
+#DeleteButton:hover {
+    background-color: #2980b9; /* Darken button color on hover */
+}
+/* Styling clear button */
+#ClearButton {
+    font-size: 14px;      /* Adjust the font size of the button text */
+    padding: 3px 7px;   /* Add padding to increase overall size */
+    background-color: #3498db; /* Button color */
+    color: white;         /* Text color */
+    border: none;         /* Remove default border */
+    border-radius: 4px;   /* Rounded corners */
+    cursor: pointer;      /* Hand cursor on hover */
+}
+
+/* Add hover effect for clear button */
+#ClearButton:hover {
+    background-color: #2980b9; /* Darken button color on hover */
+}
+
+/* Styling change button */
+#ChangeButton {
+    font-size: 14px;      /* Adjust the font size of the button text */
+    padding: 3px 7px;   /* Add padding to increase overall size */
+    background-color: #3498db; /* Button color */
+    color: white;         /* Text color */
+    border: none;         /* Remove default border */
+    border-radius: 4px;   /* Rounded corners */
+    cursor: pointer;      /* Hand cursor on hover */
+}
+
+/* Add hover effect for change button */
+#ChangeButton:hover {
+    background-color: #2980b9; /* Darken button color on hover */
+}
+
+/* Styling due date box */
+#dueDate {
+    font-size: 14px;      /* Adjust the font size of the button text */
+    padding: 3px 7px;   /* Add padding to increase overall size */
+    background-color: #3498db; /* Button color */
+    color: white;         /* Text color */
+    border: none;         /* Remove default border */
+    border-radius: 4px;   /* Rounded corners */
+    cursor: pointer;      /* Hand cursor on hover */
+}
+
+/* Add hover effect for due date box */
+#Duedate:hover {
+    background-color: #2980b9; /* Darken button color on hover */
+}
+
+/* Styling task box */
+#taskB {
+    font-size: 14px;      /* Adjust the font size of the button text */
+    padding: 3px 7px;   /* Add padding to increase overall size */
+    background-color: #3498db; /* Button color */
+    color: white;         /* Text color */
+    border: none;         /* Remove default border */
+    border-radius: 4px;   /* Rounded corners */
+    cursor: pointer;      /* Hand cursor on hover */
+}
+
+/* Add hover effect for task box */
+#taskB:hover {
+    background-color: #2980b9; /* Darken button color on hover */
+}
