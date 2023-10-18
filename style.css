@@ -1,0 +1,14 @@
+
+
+
+/* Center the buttons horizontally */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for completed tasks */
+.completed {
+    text-decoration: line-through;
+}
