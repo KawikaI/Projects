@@ -1,5 +1,3 @@
-# Works
-
 # imports for the bot
 import discord
 from discord.ext import commands
@@ -8,6 +6,9 @@ import os
 import requests
 import json
 import logging
+import discord_modules
+import asyncio
+
 
 logging.basicConfig(level=logging.INFO)
 
@@ -36,6 +37,45 @@ polls = {}
 
 user_xp = {}
 user_level = {}
+
+# command that lists commands
+@bot.command()
+async def commandlist(ctx):
+    # Get a list of all the bot's commands
+    all_commands = [command.name for command in bot.commands]
+
+    # Format the commands for output
+    formatted_commands = "\n".join(all_commands)
+
+    # Send the commands to the channel
+    await ctx.send(f"List of all commands:\n{formatted_commands}")
+
+
+# command that creates a ticket W
+@bot.command()
+async def createticket(ctx):
+    guild = ctx.guild
+    ticket_category = discord.utils.get(guild.categories, name="Tickets")
+    
+    if not ticket_category:
+        ticket_category = await guild.create_category("Tickets")
+    
+    ticket_channel = await guild.create_text_channel(f'ticket-{ctx.author.name}', category=ticket_category)
+    
+    await ticket_channel.set_permissions(ctx.author, read_messages=True, send_messages=True)
+    await ticket_channel.set_permissions(guild.default_role, read_messages=False)
+    
+    embed = discord.Embed(title="Ticket Created", description=f"{ctx.author.mention}, your ticket has been created: {ticket_channel.mention}", color=0x00ff00)
+    await ctx.send(embed=embed)
+
+# command that closes a ticket W
+@bot.command()
+async def closeticket(ctx):
+    if "ticket-" in ctx.channel.name:
+        await ctx.channel.delete()
+        embed = discord.Embed(title="Ticket Closed", description=f"{ctx.author.mention}, your ticket was closed.", color=0xff0000)
+        await ctx.author.send(embed=embed)
+
 
 # composite function for bad words,all experience functions,greeting functions
 @bot.event
@@ -88,9 +128,6 @@ def calculate_needed_xp(level):
 async def on_ready():
   print("We have logged in as {0.user}".format(bot))
 
-
-
-  
 
 # command that kicks when user mentioned W
 @bot.command()
