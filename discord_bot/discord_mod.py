@@ -7,8 +7,8 @@ import random
 import os
 import requests
 import json
-
 import logging
+
 logging.basicConfig(level=logging.INFO)
 
 # Code for intents and similar privilages. Keep
@@ -16,6 +16,8 @@ intent = discord.Intents.default()
 intent.members = True
 intent.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intent)
+
+intent.reactions = True  # add this line
 
 # example description
 description = '''description'''
@@ -35,6 +37,49 @@ polls = {}
 user_xp = {}
 user_level = {}
 
+# composite function for bad words,all experience functions,greeting functions
+@bot.event
+async def on_message(message):
+    if message.author == bot.user or message.author.bot:
+        return
+
+    msg = message.content
+
+    # Handle bad words
+    content_lower = msg.lower()
+    for i in bad_words:
+        if i.lower() in content_lower:
+            await message.delete()
+            await message.channel.send(f"{message.author.mention}, your message was deleted for using a prohibited word.")
+            return  # No further processing if a bad word is found
+
+    # Handle leveling system 
+    user_id = message.author.id
+    if user_id not in user_xp:
+        user_xp[user_id] = 0
+        user_level[user_id] = 1
+    user_xp[user_id] += 1
+    if user_xp[user_id] >= calculate_needed_xp(user_level[user_id]):
+        user_level[user_id] += 1
+        user_xp[user_id] = 0
+        await message.channel.send(f"{message.author.mention} leveled up to {user_level[user_id]}!")
+
+    # Handle $hello, $game, $items commands
+    if msg.startswith("$hello"):
+        await message.channel.send("Hello and welcome!")
+        return
+    elif msg.startswith("$game"):
+        await message.channel.send(random.choice(game_list))
+        return
+    elif msg.startswith("$items"):
+        await message.channel.send(items)
+        return
+
+    await bot.process_commands(message)
+
+
+
+
 def calculate_needed_xp(level):
     return 5 * (level**2) + 50 * level + 100
 
@@ -43,21 +88,7 @@ def calculate_needed_xp(level):
 async def on_ready():
   print("We have logged in as {0.user}".format(bot))
 
-# event that sends hello W
-@bot.event
-async def on_message(message):
-  if message.author == bot.user:
-    return
-  await bot.process_commands(message)
-  if message.author == bot.user:
-    return
-  msg = message.content
-  if msg.startswith("$hello"):
-    await message.channel.send("Hello and welcome!")
-  if msg.startswith("$game"):
-    await message.channel.send(random.choice(game_list))
-  if msg.startswith("$items"):
-    await message.channel.send(items)
+
 
   
 
@@ -73,18 +104,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
     await member.ban(reason=reason)
     await ctx.send(f'User {member} has been banned from the server.')
 
-# command that deletes messages containgin bad words W
-@bot.event
-async def on_message(message):
-    # Convert the message content to lowercase for comparison
-    content_lower = message.content.lower()
-    
-    for i in bad_words:
-        if i.lower() in content_lower:  # Convert each bad word to lowercase for comparison
-            await message.delete()
-            await message.channel.send(f"{message.author.mention}, your message was deleted for using a prohibited word.")
-            break  # Break out of the loop once a bad word is found, no need to check further
-    await bot.process_commands(message)  # So other commands can be processed
+
 
 # command that gives warnings and bans after 3 warnings W
 @bot.command()
@@ -161,30 +181,6 @@ async def on_reaction_add(reaction, user):
         await reaction.message.remove_reaction(emoji, user)
 
 
-# command for leveling system
-@bot.event
-async def on_message(message):
-    if message.author == bot.user or message.author.bot:
-        return
-    
-    user_id = message.author.id
-
-    # Initialize the user if not present
-    if user_id not in user_xp:
-        user_xp[user_id] = 0
-        user_level[user_id] = 1
-
-    # Increase XP
-    user_xp[user_id] += 1
-
-    # Check for level up
-    if user_xp[user_id] >= calculate_needed_xp(user_level[user_id]):
-        user_level[user_id] += 1
-        user_xp[user_id] = 0
-        await message.channel.send(f"{message.author.mention} leveled up to {user_level[user_id]}!")
-
-    await bot.process_commands(message)
-
 # command for level W
 @bot.command(name='level')
 async def level(ctx, member: discord.Member = None):
@@ -223,6 +219,8 @@ async def next_level(ctx, member: discord.Member = None):
 # secret and run statement
 my_secret = ''
 bot.run(my_secret)
+
+
 
 
 # Use !level to see their current level and XP.
