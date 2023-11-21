@@ -1,0 +1,151 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 40px;
+    background-image: url('back.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+
+
+#dateForm {
+    margin: 20px;
+}
+
+
+/* Style for the image container */
+#moonPhaseImage {
+    display: block; /* Change display to block to enable margin auto to work */
+    margin-top: 96px; /* Roughly one inch of space from the element above */
+    margin-left: auto; /* Center-align the image */
+    margin-right: auto; /* Center-align the image */
+    width: 400px; /* Fixed width, adjust as needed */
+    height: 400px; /* Fixed height, adjust as needed */
+    object-fit: cover; /* To ensure the image covers the area */
+    margin-top: 50px; /* Adjust the value as needed */
+  }
+  
+  /* Ensure the form element does not have any alignment issues */
+  #moonPhaseForm {
+    text-align: center; /* Center the form contents */
+  }
+  
+
+input[type="date"], button {
+    padding: 10px 20px; /* Increase padding to make them bigger */
+    font-size: 16px; /* Increase font size if you like */
+    border: 1px solid #ccc; /* Add a border (optional) */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer when hovering over the button */
+  }
+  
+  button {
+    background-color: #f8f8f8; /* Light grey background for the button */
+    border-color: #333; /* Darker border for the button */
+  }
+  
+  /* Increase the size of the button text and the date input */
+  input[type="date"], button {
+    font-size: 1.2em; /* Makes text larger */
+  }
+  
+  /* Hover effect for button */
+  button:hover {
+    background-color: #e7e7e7; /* Slightly darker grey when hovered */
+  }
+
+  
+  img {
+    width: 500px; /* Set a specific width */
+    height: 500px; /* Set a specific height */
+    object-fit: cover; /* This will cover the area without stretching the image */
+    border-radius: 10px; /* Optional: if you want rounded corners for all images */
+  }
+  
+#textContainer {
+    text-align: center; /* Center the text inside the container */
+    margin: 20px 0; /* Add some space above and below the container */
+}
+
+#moonInfo, #result {
+    color: white; /* White text color */
+    font-size: 24px; /* Larger font size */
+    /* Additional styling as needed */
+}
+
+
+
+  h1 {
+    color: white;
+  }
+ 
+
+
+  .main-content {
+    display: flex;
+    padding: 20px;
+    color: white; /* Set text color to white for the entire content */
+}
+
+.definitions-side {
+    flex: 1;
+    padding-right: 20px; /* Spacing between definitions and main content */
+}
+
+.moon-phase-content {
+    flex: 3; /* Adjust ratio as needed for better layout */
+}
+
+.definition {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: white; /* White font color for definitions */
+    font-size: 18px; /* Increased font size for definitions */
+}
+
+.definition .definition-text {
+    display: none;
+    margin-top: 5px;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    color: black; /* Text color for definition details */
+    border-radius: 10px; /* Rounded corners for the definition boxes */
+    font-size: 16px; /* Increased font size for definition text */
+}
+
+.definition:hover .definition-text {
+    display: block;
+}
+
+
+/* floating button */
+#floatButton, #floatButton2, #floatButton3 {
+  position: fixed;
+  padding: 10px 20px;
+  border: none;
+  background-color: #008cba;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  max-width: 200px; /* Adjust this value as needed */
+  word-wrap: break-word;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5); /* Optional: Adds a shadow for better visibility */
+}
+
