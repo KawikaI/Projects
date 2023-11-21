@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moon Phase Calculator</title>
+    <style>
+        /* CSS styles will be defined here */
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+        <div class="moon-phase-content">
+            <h1>Moon Phase Calculator</h1>
+            <form id="moonPhaseForm">
+                <input type="date" id="dateInput" required>
+                <button type="submit">Calculate Moon Phase</button>
+                <button id="getMoonPhaseBtn" type="button">Get Moon Info for My Location</button>
+
+                <button id="floatButton" type="button">Waning</button>
+                <div id="popup1" class="popup">Describes the gradual decrease of the sunlit part of the Moon after the Full Moon</div>
+                <button id="floatButton2" type="button">Waxing</button>
+                <div id="popup2" class="popup">Waxing is a term used in astronomy to describe the process of the moon increasing its visible illuminated portion</div>
+                <button id="floatButton3" type="button">Gibbous</button>
+                <div id="popup3" class="popup">The term gibbous refers to the shape of the Moon when it is more than half illuminated, but not completely illuminated.</div>
+            </form>
+
+            <div id="textContainer">
+                <div id="moonInfo"></div>
+                <div id="result"></div>
+            </div>
+            
+            <img id="moonPhaseImage" src="" alt="Moon Phase Image" style="display: none;"> 
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
