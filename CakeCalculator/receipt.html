@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receipt</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif; /* Change the font, if desired */
+            margin-bottom: 50px; /* Space at the bottom */
+        }
+
+
+    </style>
+</head>
+<body>
+    <form id="receiptForm" action="https://formspree.io/f/mqkvvgaa" method="POST">
+        <a id="back-button" href="index.html">Back</a>
+        <div id="total-display">Total: $0</div>
+        <ul id="item-list"></ul>
+
+        <!-- Hidden input to store total amount -->
+        <input type="hidden" id="totalAmountField" name="totalAmount" value="0">
+
+        <!-- Submit button -->
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+
+    <script>
+        
+        window.onload = function() {
+            const items = JSON.parse(localStorage.getItem('selectedItems')) || [];
+            let itemListHtml = '';
+
+            items.forEach(item => {
+                itemListHtml += `<li>${item.itemName} - $${item.price.toFixed(2)}</li>`;
+            });
+
+            document.getElementById('item-list').innerHTML = itemListHtml;
+            const totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+            document.getElementById('total-display').textContent = 'Total: $' + totalAmount.toFixed(2);
+            document.getElementById('totalAmountField').value = totalAmount.toFixed(2);
+}
+
+        // function to clear the localStorage
+        function resetSelections() {
+        localStorage.removeItem('items'); // Adjust this to your localStorage key
+        localStorage.removeItem('totalAmount');
+        // Add more if there are other items to clear
+        }
+    </script>
+</body>
+</html>
+
+
+
